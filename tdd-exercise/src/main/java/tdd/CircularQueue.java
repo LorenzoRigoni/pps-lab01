@@ -1,5 +1,7 @@
 package tdd;
 
+import java.util.List;
+
 /**
  *  Task 3 - TDD for Circular Queue
  *  A simple CircularQueue that stores integers with a **fixed** capacity.
@@ -13,4 +15,42 @@ package tdd;
  *   - Introduce methods in the interface in order to make the tests pass.
  *   - Refactor
  */
-public interface CircularQueue { }
+public interface CircularQueue {
+
+    /**
+     * Enqueue an integer in the queue. When the number of elements is equal to the capacity,
+     * the new elements overwrite the oldest ones.
+     *
+     * @param value The value to enqueue
+     */
+    void enqueue(int value);
+
+    /**
+     * Remove from the queue the first element.
+     *
+     * @return The element removed
+     * @throws IllegalStateException if the queue is empty
+     */
+    int dequeue();
+
+    /**
+     * Retrieves the capacity of the queue.
+     *
+     * @return The capacity of the queue
+     */
+    int getCapacity();
+
+    /**
+     * Checks if the queue is empty.
+     *
+     * @return true if the queue is empty, false otherwise
+     */
+    boolean isEmpty();
+
+    /**
+     * Retrieve a copy of the queue.
+     *
+     * @return A copy of the queue
+     */
+    List<Integer> getQueue();
+}
