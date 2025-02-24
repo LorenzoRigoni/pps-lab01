@@ -18,32 +18,42 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int pop() {
-        return this.stack.remove(this.stack.size() - 1);
+        if (!isEmpty())
+            return this.stack.remove(this.stack.size() - 1);
+        throw new IllegalStateException("The stack is empty");
     }
 
     @Override
     public int peek() {
-        return this.stack.get(this.stack.size() - 1);
+        if (!isEmpty())
+            return this.stack.get(this.stack.size() - 1);
+        throw new IllegalStateException("The stack is empty");
     }
 
     @Override
     public int getMin() {
-        int min = this.stack.get(0);
-        for (Integer val : this.stack) {
-            if (val < min)
-                min = val;
+        if (!isEmpty()) {
+            int min = this.stack.get(0);
+            for (final Integer val : this.stack) {
+                if (val < min)
+                    min = val;
+            }
+            return min;
         }
-        return min;
+        throw new IllegalStateException("The stack is empty");
     }
 
     @Override
     public int getMax() {
-        int max = this.stack.get(0);
-        for (Integer val : this.stack) {
-            if (val > max)
-                max = val;
+        if (!isEmpty()) {
+            int max = this.stack.get(0);
+            for (final Integer val : this.stack) {
+                if (val > max)
+                    max = val;
+            }
+            return max;
         }
-        return max;
+        throw new IllegalStateException("The stack is empty");
     }
 
     @Override
