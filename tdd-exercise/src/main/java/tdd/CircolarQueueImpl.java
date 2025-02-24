@@ -17,7 +17,10 @@ public class CircolarQueueImpl implements CircularQueue {
 
     @Override
     public void enqueue(int value) {
-        this.queue.set(this.numElementsEntered % this.capacity, value);
+        if (this.numElementsEntered < this.capacity)
+            this.queue.add(value);
+        else
+            this.queue.set(this.numElementsEntered % this.capacity, value);
         this.numElementsEntered++;
     }
 
@@ -41,5 +44,10 @@ public class CircolarQueueImpl implements CircularQueue {
     @Override
     public List<Integer> getQueue() {
         return Collections.unmodifiableList(this.queue);
+    }
+
+    @Override
+    public int getSize() {
+        return this.queue.size();
     }
 }

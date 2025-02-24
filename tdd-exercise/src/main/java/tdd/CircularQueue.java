@@ -53,4 +53,11 @@ public interface CircularQueue {
      * @return A copy of the queue
      */
     List<Integer> getQueue();
+
+    /**
+     * Retrieve the number of elements in the queue.
+     *
+     * @return The number of elements in the queue
+     */
+    int getSize();
 }
