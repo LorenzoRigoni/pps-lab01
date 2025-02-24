@@ -1,6 +1,7 @@
 package tdd;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.List;
 
 public class MinMaxStackImpl implements MinMaxStack {
@@ -27,12 +28,22 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int getMin() {
-        return 0;
+        int min = this.stack.get(0);
+        for (Integer val : this.stack) {
+            if (val < min)
+                min = val;
+        }
+        return min;
     }
 
     @Override
     public int getMax() {
-        return 0;
+        int max = this.stack.get(0);
+        for (Integer val : this.stack) {
+            if (val > max)
+                max = val;
+        }
+        return max;
     }
 
     @Override
@@ -42,6 +53,6 @@ public class MinMaxStackImpl implements MinMaxStack {
 
     @Override
     public int size() {
-        return 0;
+        return this.stack.size();
     }
 }
