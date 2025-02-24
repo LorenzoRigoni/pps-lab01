@@ -33,12 +33,7 @@ public class MinMaxStackImpl implements MinMaxStack {
     @Override
     public int getMin() {
         if (!isEmpty()) {
-            int min = this.stack.get(0);
-            for (final Integer val : this.stack) {
-                if (val < min)
-                    min = val;
-            }
-            return min;
+            return calcMinOrMax(true);
         }
         throw new IllegalStateException("The stack is empty");
     }
@@ -46,12 +41,7 @@ public class MinMaxStackImpl implements MinMaxStack {
     @Override
     public int getMax() {
         if (!isEmpty()) {
-            int max = this.stack.get(0);
-            for (final Integer val : this.stack) {
-                if (val > max)
-                    max = val;
-            }
-            return max;
+            return calcMinOrMax(false);
         }
         throw new IllegalStateException("The stack is empty");
     }
@@ -64,5 +54,18 @@ public class MinMaxStackImpl implements MinMaxStack {
     @Override
     public int size() {
         return this.stack.size();
+    }
+
+    private int calcMinOrMax(final boolean isMinToCalc) {
+        int minOrMax = this.stack.get(0);
+        for (final Integer val : this.stack) {
+            if (isMinToCalc) {
+                if (val < minOrMax)
+                    minOrMax = val;
+            } else
+                if (val > minOrMax)
+                    minOrMax = val;
+        }
+        return minOrMax;
     }
 }

@@ -44,10 +44,9 @@ class MinMaxStackImplTest {
 
     @Test
     void testMax() {
-        final int maxValue = 5;
         for (int i = 1; i <= NUM_VALUES_TO_PUSH; i++)
             stack.push(i);
-        assertEquals(maxValue, stack.getMax());
+        assertEquals(NUM_VALUES_TO_PUSH, stack.getMax());
     }
 
     @Test
