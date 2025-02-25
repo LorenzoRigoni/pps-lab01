@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MinMaxStackImplTest {
     private static final int SINGLE_VALUE_TO_PUSH = 1;
-    private static final int SINGLE_VALUE_TO_POP = 1;
+    private static final int SINGLE_VALUE_TO_POP = SINGLE_VALUE_TO_PUSH;
     private static final int NUM_VALUES_TO_PUSH = 5;
     private MinMaxStack stack;
 

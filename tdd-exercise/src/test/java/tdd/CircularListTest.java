@@ -50,7 +50,7 @@ public class CircularListTest {
     }
 
     @Test
-    void testEqueueAfterMaxCapacity() {
+    void testEnqueueAfterMaxCapacity() {
         final List<Integer> elementsAdded = new ArrayList<>();
         for (int i = 0; i < QUEUE_CAPACITY; i++) {
             queue.enqueue(i);

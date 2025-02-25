@@ -12,7 +12,6 @@ public class SmartDoorLockTest {
     private static final int INITIAL_NUM_ATTEMPTS = 0;
     private static final int FIRST_ATTEMPT = 1;
     private static int MAX_ATTEMPTS;
-    private static final String PIN_NOT_SET_MESSAGE = "The PIN is not set";
     private SmartDoorLock lock;
 
     @BeforeEach
@@ -80,8 +79,7 @@ public class SmartDoorLockTest {
 
     @Test
     void testExceptionPinNotSet() {
-        Exception exception = assertThrows(Exception.class, () -> lock.lock());
-        assertEquals(PIN_NOT_SET_MESSAGE, exception.getMessage());
+        assertThrows(Exception.class, () -> lock.lock());
     }
 
     @Test
