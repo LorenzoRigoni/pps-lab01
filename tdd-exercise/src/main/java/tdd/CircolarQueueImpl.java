@@ -32,11 +32,6 @@ public class CircolarQueueImpl implements CircularQueue {
     }
 
     @Override
-    public int getCapacity() {
-        return this.capacity;
-    }
-
-    @Override
     public boolean isEmpty() {
         return this.queue.isEmpty();
     }

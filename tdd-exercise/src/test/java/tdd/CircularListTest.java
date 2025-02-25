@@ -1,6 +1,5 @@
 package tdd;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class CircularListTest {
     private static final int QUEUE_CAPACITY = 5;
-    private static final int QUEUE_CAPACITY_AFTER_DEQUEUE = 4;
-    private static final int FIRST_ELEMENT_OF_QUEUE = 0;
+    private static final int QUEUE_CAPACITY_AFTER_DEQUEUE = QUEUE_CAPACITY - 1;
+    private static final int NEW_ELEMENT_ENQUEUE = 5;
     private CircularQueue queue;
 
     @BeforeEach
@@ -39,12 +38,34 @@ public class CircularListTest {
 
     @Test
     void testDequeue() {
+        final List<Integer> elementsAdded = new ArrayList<>();
         for (int i = 0; i < QUEUE_CAPACITY; i++) {
             queue.enqueue(i);
+            elementsAdded.add(i);
         }
         assertAll(
-                () -> assertEquals(FIRST_ELEMENT_OF_QUEUE, queue.dequeue()),
+                () -> assertEquals(elementsAdded.get(0), queue.dequeue()),
                 () -> assertEquals(QUEUE_CAPACITY_AFTER_DEQUEUE, queue.getSize())
         );
+    }
+
+    @Test
+    void testEqueueAfterMaxCapacity() {
+        final List<Integer> elementsAdded = new ArrayList<>();
+        for (int i = 0; i < QUEUE_CAPACITY; i++) {
+            queue.enqueue(i);
+            elementsAdded.add(i);
+        }
+        queue.enqueue(NEW_ELEMENT_ENQUEUE);
+        elementsAdded.set(0, NEW_ELEMENT_ENQUEUE);
+        assertAll(
+                () -> assertEquals(QUEUE_CAPACITY, queue.getSize()),
+                () -> assertEquals(elementsAdded, queue.getQueue())
+        );
+    }
+
+    @Test
+    void testDequeueWithEmptyStack() {
+        assertThrows(IllegalStateException.class, () -> queue.dequeue());
     }
 }

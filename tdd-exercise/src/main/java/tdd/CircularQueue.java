@@ -34,13 +34,6 @@ public interface CircularQueue {
     int dequeue();
 
     /**
-     * Retrieves the capacity of the queue.
-     *
-     * @return The capacity of the queue
-     */
-    int getCapacity();
-
-    /**
      * Checks if the queue is empty.
      *
      * @return true if the queue is empty, false otherwise
